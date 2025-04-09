@@ -1,46 +1,109 @@
-# kit-vcs
+# 🦊 kit-vcs
 
-## Overview
+**`kit`** is a cute, minimal version control system written in modern C++. Inspired by Git, it is designed for learning and exploring the internals of version control systems.
 
-`kit-vcs` is a lightweight, toy version control system designed for educational purposes. It demonstrates the core concepts of version control, such as tracking changes, committing updates, and managing repositories. This project is ideal for learning the basics of version control systems.
-
----
-
-## Features
-
-- **Track Changes**: Monitor modifications to files in a repository.
-- **Commit Updates**: Save changes with meaningful commit messages.
-- **View History**: Display a log of all commits.
-- **Lightweight**: Simple and easy to use.
+![kit-vcs logo](assets/logo_pixel.png)
+![kit banner](https://img.shields.io/badge/version-0.1.0-blue?style=flat-square)
 
 ---
 
-## Installation
+## ✨ Features (WIP)
 
-To get started, clone the repository to your local machine:
+- [x] `kit init` – Initialize a repository.
+- [x] `kit add <file>` – Stage files.
+- [x] `kit commit` – Commit staged files.
+- [x] `kit log` – Show commit history.
+- [x] `kit status` – Show repository status.
+- [x] `.kit` structure and object storage.
+- [x] `kit stash` – Temporarily save changes.
+- [x] `kit branch` – Manage branches.
+- [x] `kit checkout` – Switch branches.
+- [x] `kit merge` – Merge branches.
+- [x] `kit reset` – Reset to a specific commit.
+- [x] `kit diff` – Show differences between commits or the working directory.
+
+---
+
+## 🛠 Getting Started
+
+Follow these steps to set up and use `kit-vcs`:
+
+### 🔧 Build
+
+1. Clone the repository:
+   ```bash
+    git clone https://github.com/yourusername/kit-vcs.git
+    cd kit-vcs
+   ```
+
+2. Build the project:
+```bash
+   mkdir build && cd build
+   cmake ..
+   make
+```
+
+3. Run the CLI:
+   ```bash
+   ./kit-vcs --help
+   ```
+
+---
+
+🛠 CLI Commands
+Here are the Git-like commands supported by kit-vcs:
+
+kit init – Initialize a new repository.
+kit add <file> – Add file(s) to the staging area.
+kit commit -m <message> – Commit staged files with a message.
+kit log – Show commit history.
+kit status – Show the current status of the repository.
+kit stash – Stash changes temporarily.
+kit branch – Manage branches.
+kit checkout <branch> – Switch to a specific branch.
+kit merge <branch> – Merge a branch into the current branch.
+kit reset <commit> – Reset to a specific commit.
+kit diff – Show differences between commits or the working directory.
+
+---
+
+🗂 CLI Usage
+Here’s an example of how to use kit-vcs:
 
 ```bash
-git clone https://github.com/your-username/kit-vcs.git
-
-cd kit-vcs
-```
-
-Usage
-Follow these steps to use kit-vcs:
-
-1. Initialize a new repository:
-```
 kit init
-```
-Add files to the repository:
-```
-kit add <file>
-```
-Commit changes:
-```
-kit commit -m "Your commit message"
-```
-View the commit history:
-```
+kit add main.cpp
+kit commit -m "Initial commit"
 kit log
 ```
+
+---
+🧪 Tech Stack
+
+- C++17 – Modern C++ for clean and efficient code.
+- CMake – Build system for cross-platform compatibility.
+- cxxopts – Lightweight CLI parser.
+- Filesystem API – For file and directory operations.
+(Future) OpenSSL or Crypto++ – For hashing and encryption.
+
+---
+
+📦 Project Structure
+The .kit directory structure:
+
+```bash
+.kit/
+├── HEAD
+├── objects/
+└── refs/
+    └── heads/
+```
+---
+
+👀 Goals
+
+   -  Learn Git internals
+
+   -  Write a clean version control system
+
+   -  Play with low-level file I/O, hashing, and DAGs

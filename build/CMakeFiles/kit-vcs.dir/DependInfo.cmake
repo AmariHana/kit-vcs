@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/hana/Desktop/kit-vcs/src/hash_object.cpp" "CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o" "gcc" "CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o.d"
   "/Users/hana/Desktop/kit-vcs/src/main.cpp" "CMakeFiles/kit-vcs.dir/src/main.cpp.o" "gcc" "CMakeFiles/kit-vcs.dir/src/main.cpp.o.d"
   )
 

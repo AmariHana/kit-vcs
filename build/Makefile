@@ -129,6 +129,30 @@ kit-vcs/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/build
 .PHONY : kit-vcs/fast
 
+src/hash_object.o: src/hash_object.cpp.o
+.PHONY : src/hash_object.o
+
+# target to build an object file
+src/hash_object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o
+.PHONY : src/hash_object.cpp.o
+
+src/hash_object.i: src/hash_object.cpp.i
+.PHONY : src/hash_object.i
+
+# target to preprocess a source file
+src/hash_object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/src/hash_object.cpp.i
+.PHONY : src/hash_object.cpp.i
+
+src/hash_object.s: src/hash_object.cpp.s
+.PHONY : src/hash_object.s
+
+# target to generate assembly for a file
+src/hash_object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/src/hash_object.cpp.s
+.PHONY : src/hash_object.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... kit-vcs"
+	@echo "... src/hash_object.o"
+	@echo "... src/hash_object.i"
+	@echo "... src/hash_object.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

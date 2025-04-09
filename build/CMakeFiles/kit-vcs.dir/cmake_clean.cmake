@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o"
+  "CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o.d"
   "CMakeFiles/kit-vcs.dir/src/main.cpp.o"
   "CMakeFiles/kit-vcs.dir/src/main.cpp.o.d"
   "kit-vcs"
