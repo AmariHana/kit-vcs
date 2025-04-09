@@ -12,15 +12,15 @@
 - [x] `kit init` – Initialize a repository.
 - [x] `kit add <file>` – Stage files.
 - [x] `kit commit` – Commit staged files.
-- [x] `kit log` – Show commit history.
-- [x] `kit status` – Show repository status.
-- [x] `.kit` structure and object storage.
-- [x] `kit stash` – Temporarily save changes.
-- [x] `kit branch` – Manage branches.
-- [x] `kit checkout` – Switch branches.
-- [x] `kit merge` – Merge branches.
-- [x] `kit reset` – Reset to a specific commit.
-- [x] `kit diff` – Show differences between commits or the working directory.
+- [ ] `kit log` – Show commit history.
+- [ ] `kit status` – Show repository status.
+- [ ] `.kit` structure and object storage.
+- [ ] `kit stash` – Temporarily save changes.
+- [ ] `kit branch` – Manage branches.
+- [ ] `kit checkout` – Switch branches.
+- [ ] `kit merge` – Merge branches.
+- [ ] `kit reset` – Reset to a specific commit.
+- [ ] `kit diff` – Show differences between commits or the working directory.
 
 ---
 
