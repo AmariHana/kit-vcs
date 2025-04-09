@@ -53,17 +53,17 @@ Follow these steps to set up and use `kit-vcs`:
 🛠 CLI Commands
 Here are the Git-like commands supported by kit-vcs:
 
-kit init – Initialize a new repository.
-kit add <file> – Add file(s) to the staging area.
-kit commit -m <message> – Commit staged files with a message.
-kit log – Show commit history.
-kit status – Show the current status of the repository.
-kit stash – Stash changes temporarily.
-kit branch – Manage branches.
-kit checkout <branch> – Switch to a specific branch.
-kit merge <branch> – Merge a branch into the current branch.
-kit reset <commit> – Reset to a specific commit.
-kit diff – Show differences between commits or the working directory.
+- kit init – Initialize a new repository.
+- kit add <file> – Add file(s) to the staging area.
+- kit commit -m <message> – Commit staged files with a message.
+- kit log – Show commit history.
+- kit status – Show the current status of the repository.
+- kit stash – Stash changes temporarily.
+- kit branch – Manage branches.
+- kit checkout <branch> – Switch to a specific branch.
+- kit merge <branch> – Merge a branch into the current branch.
+- kit reset <commit> – Reset to a specific commit.
+- kit diff – Show differences between commits or the working directory.
 
 ---
 
