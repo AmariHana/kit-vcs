@@ -1,0 +1,7 @@
+/Users/hana/Desktop/kit-vcs/build/CMakeFiles/kit-vcs.dir
+/Users/hana/Desktop/kit-vcs/build/CMakeFiles/edit_cache.dir
+/Users/hana/Desktop/kit-vcs/build/CMakeFiles/rebuild_cache.dir
+/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/CMakeFiles/edit_cache.dir
+/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/CMakeFiles/rebuild_cache.dir
+/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/include/CMakeFiles/edit_cache.dir
+/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/include/CMakeFiles/rebuild_cache.dir

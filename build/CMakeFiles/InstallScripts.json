@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/hana/Desktop/kit-vcs/build/cmake_install.cmake",
+		"/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/cmake_install.cmake",
+		"/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-build/include/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
