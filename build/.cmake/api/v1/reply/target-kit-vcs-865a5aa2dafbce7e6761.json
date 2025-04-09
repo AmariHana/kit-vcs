@@ -62,7 +62,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17 -arch arm64"
+					"fragment" : "-std=gnu++17 -arch arm64"
 				},
 				{
 					"backtrace" : 3,
@@ -114,10 +114,6 @@
 	{
 		"commandFragments" : 
 		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
 			{
 				"backtrace" : 2,
 				"fragment" : "/opt/homebrew/lib/libssl.dylib",

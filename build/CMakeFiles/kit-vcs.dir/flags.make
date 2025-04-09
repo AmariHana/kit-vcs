@@ -6,7 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/Users/hana/Desktop/kit-vcs/include -I/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include
 
-CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
+CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
 
-CXX_FLAGS = -g -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
+CXX_FLAGS = -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
 
