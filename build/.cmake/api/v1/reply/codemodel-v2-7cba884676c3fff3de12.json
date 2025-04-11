@@ -10,7 +10,7 @@
 					[
 						1
 					],
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.14"
@@ -28,7 +28,7 @@
 					[
 						2
 					],
-					"jsonFile" : "directory-_deps.cxxopts-build-91561198f607c47f9a4d.json",
+					"jsonFile" : "directory-_deps.cxxopts-build-Debug-91561198f607c47f9a4d.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.1"
@@ -39,7 +39,7 @@
 				},
 				{
 					"build" : "_deps/cxxopts-build/include",
-					"jsonFile" : "directory-_deps.cxxopts-build.include-82c50445f0f38dd9c938.json",
+					"jsonFile" : "directory-_deps.cxxopts-build.include-Debug-82c50445f0f38dd9c938.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.1"
@@ -49,7 +49,7 @@
 					"source" : "build/_deps/cxxopts-src/include"
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -82,7 +82,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "kit-vcs::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-kit-vcs-865a5aa2dafbce7e6761.json",
+					"jsonFile" : "target-kit-vcs-Debug-de7c73e72e37ccc568c7.json",
 					"name" : "kit-vcs",
 					"projectIndex" : 0
 				}

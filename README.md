@@ -13,7 +13,7 @@
 - [x] `kit add <file>` – Stage files.
 - [x] `kit commit` – Commit staged files.
 - [ ] `kit log` – Show commit history.
-- [ ] `kit status` – Show repository status.
+- [x] `kit status` – Show repository status.
 - [ ] `.kit` structure and object storage.
 - [ ] `kit stash` – Temporarily save changes.
 - [ ] `kit branch` – Manage branches.
