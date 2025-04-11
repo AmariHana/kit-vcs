@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 #include "kit_vcs.hpp"
+#include "version.hpp"       // Include the version header
+#include "error_handler.hpp" // Include the error handler
 
 // Function to display the logo
 void display_logo()
@@ -19,7 +21,14 @@ void display_logo()
 void handle_init()
 {
     display_logo();
-    kit_vcs::initialize_repository();
+    try
+    {
+        kit_vcs::initialize_repository();
+    }
+    catch (const std::exception &e)
+    {
+        error_handler::handle_exception(e, "Failed to initialize repository");
+    }
 }
 
 void handle_add(const std::vector<std::string> &files)
@@ -31,17 +40,24 @@ void handle_add(const std::vector<std::string> &files)
     {
         if (!std::filesystem::exists(file))
         {
-            kit_utils::print_error("File does not exist: " + file);
+            error_handler::print_error("File does not exist: " + file);
             continue;
         }
 
-        if (!kit_vcs::stage_file(file))
+        try
         {
-            kit_utils::print_error("Failed to stage file: " + file);
+            if (!kit_vcs::stage_file(file))
+            {
+                error_handler::print_error("Failed to stage file: " + file);
+            }
+            else
+            {
+                kit_utils::print_message("File staged successfully: " + file); // Fixed here
+            }
         }
-        else
+        catch (const std::exception &e)
         {
-            kit_utils::print_message("File staged successfully: " + file);
+            error_handler::handle_exception(e, "Error while staging file '" + file + "'");
         }
     }
 }
@@ -51,9 +67,26 @@ void handle_commit(const std::string &message)
     if (!kit_utils::ensure_repository_initialized())
         return;
 
-    if (!kit_vcs::create_commit(message))
+    if (message.empty())
     {
-        kit_utils::print_error("Failed to commit.");
+        error_handler::print_error("Commit message cannot be empty.");
+        return;
+    }
+
+    try
+    {
+        if (!kit_vcs::create_commit(message))
+        {
+            error_handler::print_error("Failed to commit.");
+        }
+        else
+        {
+            kit_utils::print_message("Commit created successfully with message: " + message); // Fixed here
+        }
+    }
+    catch (const std::exception &e)
+    {
+        error_handler::handle_exception(e, "Error while creating commit");
     }
 }
 
@@ -62,18 +95,30 @@ void handle_status()
     if (!kit_utils::ensure_repository_initialized())
         return;
 
-    auto status = kit_vcs::get_repository_status();
-    if (status.empty())
+    try
     {
-        kit_utils::print_message("Working directory clean. Nothing to commit.");
-    }
-    else
-    {
-        for (const auto &file : status)
+        auto status = kit_vcs::get_repository_status();
+        if (status.empty())
         {
-            std::cout << file << std::endl;
+            kit_utils::print_message("Working directory clean. Nothing to commit."); // Fixed here
+        }
+        else
+        {
+            for (const auto &file : status)
+            {
+                std::cout << file << std::endl;
+            }
         }
     }
+    catch (const std::exception &e)
+    {
+        error_handler::handle_exception(e, "Error while retrieving repository status");
+    }
+}
+
+void handle_version()
+{
+    std::cout << "kit-vcs version " << KIT_VCS_VERSION << std::endl;
 }
 
 int main(int argc, char *argv[])
@@ -82,7 +127,7 @@ int main(int argc, char *argv[])
     {
         cxxopts::Options options("kit", "Kit - A cute minimal git clone");
 
-        options.add_options()("init", "Initialize a new kit repository")("add", "Add file(s) to the staging area", cxxopts::value<std::vector<std::string>>())("commit", "Commit staged files", cxxopts::value<std::string>())("status", "Show repository status")("h,help", "Print help");
+        options.add_options()("init", "Initialize a new kit repository")("add", "Add file(s) to the staging area", cxxopts::value<std::vector<std::string>>())("commit", "Commit staged files", cxxopts::value<std::string>())("status", "Show repository status")("version", "Show the version of kit-vcs")("h,help", "Print help");
 
         auto result = options.parse(argc, argv);
 
@@ -92,37 +137,50 @@ int main(int argc, char *argv[])
             return 0;
         }
 
+        if (result.count("version"))
+        {
+            handle_version();
+            return 0;
+        }
+
         if (result.count("init"))
+        {
             handle_init();
+        }
+
         if (result.count("add"))
         {
             if (result["add"].as<std::vector<std::string>>().empty())
             {
-                kit_utils::print_error("The '--add' option requires at least one file as an argument.");
+                error_handler::print_error("The '--add' option requires at least one file as an argument.");
                 return 1;
             }
             handle_add(result["add"].as<std::vector<std::string>>());
         }
+
         if (result.count("commit"))
         {
             if (result["commit"].as<std::string>().empty())
             {
-                kit_utils::print_error("The '--commit' option requires a commit message.");
+                error_handler::print_error("The '--commit' option requires a commit message.");
                 return 1;
             }
             handle_commit(result["commit"].as<std::string>());
         }
+
         if (result.count("status"))
+        {
             handle_status();
+        }
     }
     catch (const cxxopts::exceptions::invalid_option_syntax &e)
     {
-        kit_utils::print_error(std::string("Invalid option syntax: ") + e.what());
+        error_handler::handle_exception(e, "Invalid option syntax");
         return 1;
     }
     catch (const std::exception &e)
     {
-        kit_utils::print_error(std::string("An error occurred: ") + e.what());
+        error_handler::handle_exception(e, "An error occurred");
         return 1;
     }
 

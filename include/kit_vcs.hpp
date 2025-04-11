@@ -60,13 +60,33 @@ namespace kit_vcs
         }
     }
 
+    // Check if a file is already staged
+    inline bool is_file_staged(const std::string &file_path)
+    {
+        std::ifstream index_file(INDEX_FILE);
+        if (!index_file)
+        {
+            return false; // If the index file doesn't exist, the file is not staged
+        }
+
+        std::string line;
+        while (std::getline(index_file, line))
+        {
+            if (line.find(file_path) != std::string::npos)
+            {
+                return true; // File is already staged
+            }
+        }
+        return false;
+    }
+
     // Stage a file
     inline bool stage_file(const std::string &file_path)
     {
-        if (!std::filesystem::exists(file_path))
+        if (is_file_staged(file_path))
         {
-            kit_utils::print_error("File does not exist: " + file_path);
-            return false;
+            kit_utils::print_message("File is already staged: " + file_path);
+            return false; // Prevent duplicate staging
         }
 
         try
@@ -84,17 +104,6 @@ namespace kit_vcs
 
             // Compute the hash of the file content
             std::string hash = hash_object::compute_sha1(content);
-
-            // Write the file content to the objects directory
-            std::string object_path = std::string(OBJECTS_DIR) + "/" + hash;
-            std::ofstream object_file(object_path, std::ios::binary);
-            if (!object_file)
-            {
-                kit_utils::print_error("Failed to write object file: " + object_path);
-                return false;
-            }
-            object_file << content;
-            object_file.close();
 
             // Add the file to the index
             std::ofstream index_file(INDEX_FILE, std::ios::app);

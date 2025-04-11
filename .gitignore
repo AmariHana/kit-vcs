@@ -1,0 +1,40 @@
+# Build directories and files
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# Object files and executables
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*.DS_Store
+
+# Generated files
+*.generated.*
+
+# Kit repository files
+/.kit/
+
+# Test directories
+/kit-vcs-test/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# System files
+Thumbs.db
+.DS_Store

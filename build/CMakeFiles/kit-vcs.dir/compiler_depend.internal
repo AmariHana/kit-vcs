@@ -817,6 +817,8 @@ CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
+ /Users/hana/Desktop/kit-vcs/include/error_handler.hpp
+ /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp
  /opt/homebrew/include/openssl/configuration.h
  /opt/homebrew/include/openssl/e_os2.h
  /opt/homebrew/include/openssl/macros.h
@@ -1645,9 +1647,11 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
  /Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include/cxxopts.hpp
+ /Users/hana/Desktop/kit-vcs/include/error_handler.hpp
  /Users/hana/Desktop/kit-vcs/include/hash_object.hpp
  /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp
  /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp
+ /Users/hana/Desktop/kit-vcs/include/version.hpp
  /opt/homebrew/include/openssl/configuration.h
  /opt/homebrew/include/openssl/e_os2.h
  /opt/homebrew/include/openssl/macros.h

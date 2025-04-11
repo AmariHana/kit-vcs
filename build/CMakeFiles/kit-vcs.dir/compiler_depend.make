@@ -816,6 +816,8 @@ CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o: /Users/hana/Desktop/kit-vcs/src/ha
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
+  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp \
+  /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp \
   /opt/homebrew/include/openssl/configuration.h \
   /opt/homebrew/include/openssl/e_os2.h \
   /opt/homebrew/include/openssl/macros.h \
@@ -1643,9 +1645,11 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: /Users/hana/Desktop/kit-vcs/src/main.cpp 
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
   _deps/cxxopts-src/include/cxxopts.hpp \
+  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp \
   /Users/hana/Desktop/kit-vcs/include/hash_object.hpp \
   /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp \
   /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp \
+  /Users/hana/Desktop/kit-vcs/include/version.hpp \
   /opt/homebrew/include/openssl/configuration.h \
   /opt/homebrew/include/openssl/e_os2.h \
   /opt/homebrew/include/openssl/macros.h \
@@ -1655,8 +1659,6 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: /Users/hana/Desktop/kit-vcs/src/main.cpp 
 
 
 /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp:
-
-/Users/hana/Desktop/kit-vcs/include/kit_utils.hpp:
 
 /Users/hana/Desktop/kit-vcs/include/hash_object.hpp:
 
@@ -1677,6 +1679,10 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 /opt/homebrew/include/openssl/e_os2.h:
 
 /opt/homebrew/include/openssl/configuration.h:
+
+/Users/hana/Desktop/kit-vcs/include/kit_utils.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/error_handler.hpp:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h:
 
@@ -2571,6 +2577,8 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/is_valid.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/builtin_new_allocator.h:
+
+/Users/hana/Desktop/kit-vcs/include/version.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/sstream.h:
 

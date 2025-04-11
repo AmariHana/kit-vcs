@@ -8,6 +8,9 @@ project(kit-vcs VERSION 0.1.0 DESCRIPTION "A minimal version control system" LAN
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add the include directory
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 # Add the main executable
 add_executable(kit-vcs src/main.cpp src/hash_object.cpp)
 

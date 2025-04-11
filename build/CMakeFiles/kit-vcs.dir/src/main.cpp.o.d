@@ -827,4 +827,6 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: \
   /opt/homebrew/include/openssl/opensslconf.h \
   /opt/homebrew/include/openssl/configuration.h \
   /opt/homebrew/include/openssl/opensslv.h \
-  /opt/homebrew/include/openssl/e_os2.h
+  /opt/homebrew/include/openssl/e_os2.h \
+  /Users/hana/Desktop/kit-vcs/include/version.hpp \
+  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp
