@@ -1,11 +1,10 @@
 #include <iostream>
 #include <cxxopts.hpp>
 #include <filesystem>
-#include <fstream>
 #include <string>
 #include "kit_vcs.hpp"
-#include "version.hpp"       // Include the version header
-#include "error_handler.hpp" // Include the error handler
+#include "version.hpp"
+#include "error_handler.hpp"
 
 // Function to display the logo
 void display_logo()
@@ -21,21 +20,11 @@ void display_logo()
 void handle_init()
 {
     display_logo();
-    try
-    {
-        kit_vcs::initialize_repository();
-    }
-    catch (const std::exception &e)
-    {
-        error_handler::handle_exception(e, "Failed to initialize repository");
-    }
+    kit_vcs::initialize_repository();
 }
 
 void handle_add(const std::vector<std::string> &files)
 {
-    if (!kit_utils::ensure_repository_initialized())
-        return;
-
     for (const auto &file : files)
     {
         if (!std::filesystem::exists(file))
@@ -43,82 +32,124 @@ void handle_add(const std::vector<std::string> &files)
             error_handler::print_error("File does not exist: " + file);
             continue;
         }
-
-        try
-        {
-            if (!kit_vcs::stage_file(file))
-            {
-                error_handler::print_error("Failed to stage file: " + file);
-            }
-            else
-            {
-                kit_utils::print_message("File staged successfully: " + file); // Fixed here
-            }
-        }
-        catch (const std::exception &e)
-        {
-            error_handler::handle_exception(e, "Error while staging file '" + file + "'");
-        }
+        kit_vcs::stage_file(file);
     }
 }
 
 void handle_commit(const std::string &message)
 {
-    if (!kit_utils::ensure_repository_initialized())
-        return;
-
     if (message.empty())
     {
         error_handler::print_error("Commit message cannot be empty.");
         return;
     }
-
-    try
-    {
-        if (!kit_vcs::create_commit(message))
-        {
-            error_handler::print_error("Failed to commit.");
-        }
-        else
-        {
-            kit_utils::print_message("Commit created successfully with message: " + message); // Fixed here
-        }
-    }
-    catch (const std::exception &e)
-    {
-        error_handler::handle_exception(e, "Error while creating commit");
-    }
+    kit_vcs::create_commit(message);
 }
 
 void handle_status()
 {
-    if (!kit_utils::ensure_repository_initialized())
-        return;
-
-    try
+    auto status = kit_vcs::get_repository_status();
+    if (status.empty())
     {
-        auto status = kit_vcs::get_repository_status();
-        if (status.empty())
+        kit_utils::print_message("Working directory clean. Nothing to commit.");
+    }
+    else
+    {
+        for (const auto &line : status)
         {
-            kit_utils::print_message("Working directory clean. Nothing to commit."); // Fixed here
-        }
-        else
-        {
-            for (const auto &file : status)
-            {
-                std::cout << file << std::endl;
-            }
+            std::cout << line << std::endl;
         }
     }
-    catch (const std::exception &e)
+}
+
+void handle_log()
+{
+    auto commit_history = kit_vcs::get_commit_history();
+    if (commit_history.empty())
     {
-        error_handler::handle_exception(e, "Error while retrieving repository status");
+        kit_utils::print_message("No commits found in the repository.");
+    }
+    else
+    {
+        for (const auto &commit : commit_history)
+        {
+            std::cout << commit << std::endl;
+        }
+    }
+}
+
+void handle_stash()
+{
+    kit_vcs::stash_changes();
+}
+
+void handle_branch()
+{
+    auto branches = kit_vcs::list_branches();
+    if (branches.empty())
+    {
+        kit_utils::print_message("No branches found.");
+    }
+    else
+    {
+        kit_utils::print_message("Available branches:");
+        for (const auto &branch : branches)
+        {
+            std::cout << branch << std::endl;
+        }
+    }
+}
+
+void handle_checkout(const std::string &branch)
+{
+    if (branch.empty())
+    {
+        error_handler::print_error("Branch name cannot be empty.");
+        return;
+    }
+    kit_vcs::switch_branch(branch);
+}
+
+void handle_merge(const std::string &branch)
+{
+    if (branch.empty())
+    {
+        error_handler::print_error("Branch name cannot be empty.");
+        return;
+    }
+    kit_vcs::merge_branch(branch);
+}
+
+void handle_reset(const std::string &commit)
+{
+    if (commit.empty())
+    {
+        error_handler::print_error("Commit hash cannot be empty.");
+        return;
+    }
+    kit_vcs::reset_to_commit(commit);
+}
+
+void handle_diff()
+{
+    std::string commit_hash = "HEAD"; // Default to HEAD or specify the desired commit hash
+    auto differences = kit_vcs::get_differences(commit_hash);
+    if (differences.empty())
+    {
+        kit_utils::print_message("No differences to display.");
+    }
+    else
+    {
+        for (const auto &diff : differences)
+        {
+            std::cout << diff << std::endl;
+        }
     }
 }
 
 void handle_version()
 {
-    std::cout << "kit-vcs version " << KIT_VCS_VERSION << std::endl;
+    kit_vcs::show_version();
 }
 
 int main(int argc, char *argv[])
@@ -127,7 +158,7 @@ int main(int argc, char *argv[])
     {
         cxxopts::Options options("kit", "Kit - A cute minimal git clone");
 
-        options.add_options()("init", "Initialize a new kit repository")("add", "Add file(s) to the staging area", cxxopts::value<std::vector<std::string>>())("commit", "Commit staged files", cxxopts::value<std::string>())("status", "Show repository status")("version", "Show the version of kit-vcs")("h,help", "Print help");
+        options.add_options()("init", "Initialize a new kit repository")("add", "Add file(s) to the staging area", cxxopts::value<std::vector<std::string>>())("commit", "Commit staged files", cxxopts::value<std::string>())("status", "Show repository status")("log", "Show commit history")("stash", "Stash changes temporarily")("branch", "Manage branches")("checkout", "Switch branches", cxxopts::value<std::string>())("merge", "Merge branches", cxxopts::value<std::string>())("reset", "Reset to a specific commit", cxxopts::value<std::string>())("diff", "Show differences between commits or the working directory")("version", "Show the version of kit-vcs")("h,help", "Print help");
 
         auto result = options.parse(argc, argv);
 
@@ -150,27 +181,52 @@ int main(int argc, char *argv[])
 
         if (result.count("add"))
         {
-            if (result["add"].as<std::vector<std::string>>().empty())
-            {
-                error_handler::print_error("The '--add' option requires at least one file as an argument.");
-                return 1;
-            }
             handle_add(result["add"].as<std::vector<std::string>>());
         }
 
         if (result.count("commit"))
         {
-            if (result["commit"].as<std::string>().empty())
-            {
-                error_handler::print_error("The '--commit' option requires a commit message.");
-                return 1;
-            }
             handle_commit(result["commit"].as<std::string>());
         }
 
         if (result.count("status"))
         {
             handle_status();
+        }
+
+        if (result.count("log"))
+        {
+            handle_log();
+        }
+
+        if (result.count("stash"))
+        {
+            handle_stash();
+        }
+
+        if (result.count("branch"))
+        {
+            handle_branch();
+        }
+
+        if (result.count("checkout"))
+        {
+            handle_checkout(result["checkout"].as<std::string>());
+        }
+
+        if (result.count("merge"))
+        {
+            handle_merge(result["merge"].as<std::string>());
+        }
+
+        if (result.count("reset"))
+        {
+            handle_reset(result["reset"].as<std::string>());
+        }
+
+        if (result.count("diff"))
+        {
+            handle_diff();
         }
     }
     catch (const cxxopts::exceptions::invalid_option_syntax &e)
