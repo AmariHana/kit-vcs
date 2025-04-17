@@ -10,5 +10,11 @@
   "command": "/usr/bin/clang++  -I/Users/hana/Desktop/kit-vcs/include -I/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o -c /Users/hana/Desktop/kit-vcs/src/hash_object.cpp",
   "file": "/Users/hana/Desktop/kit-vcs/src/hash_object.cpp",
   "output": "CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o"
+},
+{
+  "directory": "/Users/hana/Desktop/kit-vcs/build",
+  "command": "/usr/bin/clang++  -I/Users/hana/Desktop/kit-vcs/include -I/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/test_kit_vcs.dir/tests/test_kit_vcs.cpp.o -c /Users/hana/Desktop/kit-vcs/tests/test_kit_vcs.cpp",
+  "file": "/Users/hana/Desktop/kit-vcs/tests/test_kit_vcs.cpp",
+  "output": "CMakeFiles/test_kit_vcs.dir/tests/test_kit_vcs.cpp.o"
 }
 ]

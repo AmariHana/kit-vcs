@@ -80,7 +80,10 @@ void handle_log()
 
 void handle_stash()
 {
-    kit_vcs::stash_changes();
+    if (!kit_vcs::stash_changes())
+    {
+        error_handler::print_error("Failed to stash changes.");
+    }
 }
 
 void handle_branch()
@@ -107,7 +110,10 @@ void handle_checkout(const std::string &branch)
         error_handler::print_error("Branch name cannot be empty.");
         return;
     }
-    kit_vcs::switch_branch(branch);
+    if (!kit_vcs::switch_branch(branch))
+    {
+        error_handler::print_error("Failed to switch to branch: " + branch);
+    }
 }
 
 void handle_merge(const std::string &branch)
@@ -117,7 +123,10 @@ void handle_merge(const std::string &branch)
         error_handler::print_error("Branch name cannot be empty.");
         return;
     }
-    kit_vcs::merge_branch(branch);
+    if (!kit_vcs::merge_branch(branch))
+    {
+        error_handler::print_error("Failed to merge branch: " + branch);
+    }
 }
 
 void handle_reset(const std::string &commit)
@@ -127,7 +136,10 @@ void handle_reset(const std::string &commit)
         error_handler::print_error("Commit hash cannot be empty.");
         return;
     }
-    kit_vcs::reset_to_commit(commit);
+    if (!kit_vcs::reset_to_commit(commit))
+    {
+        error_handler::print_error("Failed to reset to commit: " + commit);
+    }
 }
 
 void handle_diff()
@@ -156,7 +168,7 @@ int main(int argc, char *argv[])
 {
     try
     {
-        cxxopts::Options options("kit", "Kit - A cute minimal git clone");
+        cxxopts::Options options("kit", "Kit - A minimal version control system");
 
         options.add_options()("init", "Initialize a new kit repository")("add", "Add file(s) to the staging area", cxxopts::value<std::vector<std::string>>())("commit", "Commit staged files", cxxopts::value<std::string>())("status", "Show repository status")("log", "Show commit history")("stash", "Stash changes temporarily")("branch", "Manage branches")("checkout", "Switch branches", cxxopts::value<std::string>())("merge", "Merge branches", cxxopts::value<std::string>())("reset", "Reset to a specific commit", cxxopts::value<std::string>())("diff", "Show differences between commits or the working directory")("version", "Show the version of kit-vcs")("h,help", "Print help");
 
