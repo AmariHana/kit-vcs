@@ -111,8 +111,8 @@ kit__vcs_EXTERNAL_OBJECTS =
 kit-vcs: CMakeFiles/kit-vcs.dir/src/main.cpp.o
 kit-vcs: CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o
 kit-vcs: CMakeFiles/kit-vcs.dir/build.make
-kit-vcs: /opt/homebrew/lib/libssl.dylib
-kit-vcs: /opt/homebrew/lib/libcrypto.dylib
+kit-vcs: /opt/homebrew/opt/openssl@3/lib/libssl.dylib
+kit-vcs: /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib
 kit-vcs: CMakeFiles/kit-vcs.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/hana/Desktop/kit-vcs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable kit-vcs"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kit-vcs.dir/link.txt --verbose=$(VERBOSE)

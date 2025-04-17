@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/hana/Desktop/kit-vcs/include -I/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include
+CXX_INCLUDES = -I/Users/hana/Desktop/kit-vcs/include -I/Users/hana/Desktop/kit-vcs/build/_deps/cxxopts-src/include -isystem /opt/homebrew/opt/openssl@3/include
 
 CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
 

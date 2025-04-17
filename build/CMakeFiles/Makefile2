@@ -64,11 +64,13 @@ CMAKE_BINARY_DIR = /Users/hana/Desktop/kit-vcs/build
 
 # The main recursive "all" target.
 all: CMakeFiles/kit-vcs.dir/all
+all: CMakeFiles/test_kit_vcs.dir/all
 all: _deps/cxxopts-build/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/kit-vcs.dir/codegen
+codegen: CMakeFiles/test_kit_vcs.dir/codegen
 codegen: _deps/cxxopts-build/codegen
 .PHONY : codegen
 
@@ -78,6 +80,7 @@ preinstall: _deps/cxxopts-build/preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/kit-vcs.dir/clean
+clean: CMakeFiles/test_kit_vcs.dir/clean
 clean: _deps/cxxopts-build/clean
 .PHONY : clean
 
@@ -150,6 +153,38 @@ CMakeFiles/kit-vcs.dir/codegen:
 CMakeFiles/kit-vcs.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/clean
 .PHONY : CMakeFiles/kit-vcs.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_kit_vcs.dir
+
+# All Build rule for target.
+CMakeFiles/test_kit_vcs.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/hana/Desktop/kit-vcs/build/CMakeFiles --progress-num=4,5 "Built target test_kit_vcs"
+.PHONY : CMakeFiles/test_kit_vcs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_kit_vcs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hana/Desktop/kit-vcs/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_kit_vcs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hana/Desktop/kit-vcs/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_kit_vcs.dir/rule
+
+# Convenience name for target.
+test_kit_vcs: CMakeFiles/test_kit_vcs.dir/rule
+.PHONY : test_kit_vcs
+
+# codegen rule for target.
+CMakeFiles/test_kit_vcs.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/hana/Desktop/kit-vcs/build/CMakeFiles --progress-num=4,5 "Finished codegen for target test_kit_vcs"
+.PHONY : CMakeFiles/test_kit_vcs.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_kit_vcs.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/clean
+.PHONY : CMakeFiles/test_kit_vcs.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
