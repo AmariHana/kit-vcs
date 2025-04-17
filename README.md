@@ -12,10 +12,10 @@
 - [x] `kit init` – Initialize a repository.
 - [x] `kit add <file>` – Stage files.
 - [x] `kit commit` – Commit staged files.
-- [ ] `kit log` – Show commit history.
+- [x] `kit log` – Show commit history.
 - [x] `kit status` – Show repository status.
-- [ ] `.kit` structure and object storage.
-- [ ] `kit stash` – Temporarily save changes.
+- [x] `.kit` structure and object storage.
+- [x] `kit stash` – Temporarily save changes.
 - [ ] `kit branch` – Manage branches.
 - [ ] `kit checkout` – Switch branches.
 - [ ] `kit merge` – Merge branches.
@@ -116,18 +116,6 @@ The `.kit` directory structure:
 ---
 
 ## 🛠 Planned Features
-
-### `kit log`
-- Display the commit history in reverse chronological order.
-- Show commit hashes, messages, and timestamps.
-
-### `.kit` Structure
-- Implement a robust `.kit/objects` directory for storing file snapshots and commits.
-- Use a `HEAD` file to track the current branch or commit.
-
-### `kit stash`
-- Temporarily save changes in the working directory.
-- Allow users to apply or drop stashed changes.
 
 ### `kit branch`
 - Create, list, and delete branches.
