@@ -26,6 +26,7 @@ cmake_install.cmake
 
 # Kit repository files
 /.kit/
+./build
 
 # Test directories
 /kit-vcs-test/
