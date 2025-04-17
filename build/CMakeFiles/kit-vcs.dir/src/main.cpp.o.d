@@ -799,6 +799,9 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_set \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/regex \
+  /Users/hana/Desktop/kit-vcs/include/cli.hpp \
+  /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/branch.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
@@ -818,15 +821,24 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/../utils/constants.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/../utils/kit_utils.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
-  /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp \
-  /Users/hana/Desktop/kit-vcs/include/hash_object.hpp \
-  /opt/homebrew/include/openssl/sha.h \
-  /opt/homebrew/include/openssl/macros.h \
-  /opt/homebrew/include/openssl/opensslconf.h \
-  /opt/homebrew/include/openssl/configuration.h \
-  /opt/homebrew/include/openssl/opensslv.h \
-  /opt/homebrew/include/openssl/e_os2.h \
-  /Users/hana/Desktop/kit-vcs/include/version.hpp \
-  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp
+  /Users/hana/Desktop/kit-vcs/include/commands/checkout.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/commit.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/../utils/hash_object.hpp \
+  /opt/homebrew/opt/openssl@3/include/openssl/sha.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/macros.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslconf.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/configuration.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslv.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/e_os2.h \
+  /Users/hana/Desktop/kit-vcs/include/commands/diff.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/merge.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/reset.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/stash.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/status.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/constants.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/kit_utils.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/error_handler.hpp \
+  /Users/hana/Desktop/kit-vcs/include/version.hpp

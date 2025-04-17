@@ -629,7 +629,6 @@ CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o: /Users/hana/Desktop/kit-vcs/src/ha
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iomanip \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iosfwd \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/istream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iterator \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/limits \
@@ -816,14 +815,13 @@ CMakeFiles/kit-vcs.dir/src/hash_object.cpp.o: /Users/hana/Desktop/kit-vcs/src/ha
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
-  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp \
-  /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp \
-  /opt/homebrew/include/openssl/configuration.h \
-  /opt/homebrew/include/openssl/e_os2.h \
-  /opt/homebrew/include/openssl/macros.h \
-  /opt/homebrew/include/openssl/opensslconf.h \
-  /opt/homebrew/include/openssl/opensslv.h \
-  /opt/homebrew/include/openssl/sha.h
+  /Users/hana/Desktop/kit-vcs/include/utils/hash_object.hpp \
+  /opt/homebrew/opt/openssl@3/include/openssl/configuration.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/e_os2.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/macros.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslconf.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslv.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/sha.h
 
 CMakeFiles/kit-vcs.dir/src/main.cpp.o: /Users/hana/Desktop/kit-vcs/src/main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
@@ -1645,22 +1643,50 @@ CMakeFiles/kit-vcs.dir/src/main.cpp.o: /Users/hana/Desktop/kit-vcs/src/main.cpp 
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
   _deps/cxxopts-src/include/cxxopts.hpp \
-  /Users/hana/Desktop/kit-vcs/include/error_handler.hpp \
-  /Users/hana/Desktop/kit-vcs/include/hash_object.hpp \
-  /Users/hana/Desktop/kit-vcs/include/kit_utils.hpp \
+  /Users/hana/Desktop/kit-vcs/include/cli.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/constants.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/hash_object.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/kit_utils.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/branch.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/checkout.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/commit.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/diff.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/merge.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/reset.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/stash.hpp \
+  /Users/hana/Desktop/kit-vcs/include/commands/status.hpp \
   /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/constants.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/error_handler.hpp \
+  /Users/hana/Desktop/kit-vcs/include/utils/kit_utils.hpp \
   /Users/hana/Desktop/kit-vcs/include/version.hpp \
-  /opt/homebrew/include/openssl/configuration.h \
-  /opt/homebrew/include/openssl/e_os2.h \
-  /opt/homebrew/include/openssl/macros.h \
-  /opt/homebrew/include/openssl/opensslconf.h \
-  /opt/homebrew/include/openssl/opensslv.h \
-  /opt/homebrew/include/openssl/sha.h
+  /opt/homebrew/opt/openssl@3/include/openssl/configuration.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/e_os2.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/macros.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslconf.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/opensslv.h \
+  /opt/homebrew/opt/openssl@3/include/openssl/sha.h
 
+
+/Users/hana/Desktop/kit-vcs/include/utils/error_handler.hpp:
 
 /Users/hana/Desktop/kit-vcs/include/kit_vcs.hpp:
 
-/Users/hana/Desktop/kit-vcs/include/hash_object.hpp:
+/Users/hana/Desktop/kit-vcs/include/commands/merge.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/commands/diff.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/commands/commit.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/commands/checkout.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/commands/branch.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/utils/kit_utils.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/utils/constants.hpp:
+
+/Users/hana/Desktop/kit-vcs/include/cli.hpp:
 
 _deps/cxxopts-src/include/cxxopts.hpp:
 
@@ -1670,19 +1696,17 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree:
 
-/opt/homebrew/include/openssl/sha.h:
+/opt/homebrew/opt/openssl@3/include/openssl/opensslconf.h:
 
-/opt/homebrew/include/openssl/macros.h:
+/opt/homebrew/opt/openssl@3/include/openssl/e_os2.h:
 
-/opt/homebrew/include/openssl/e_os2.h:
+/opt/homebrew/opt/openssl@3/include/openssl/configuration.h:
 
-/opt/homebrew/include/openssl/configuration.h:
-
-/Users/hana/Desktop/kit-vcs/include/kit_utils.hpp:
-
-/Users/hana/Desktop/kit-vcs/include/error_handler.hpp:
+/Users/hana/Desktop/kit-vcs/include/utils/hash_object.hpp:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h:
 
@@ -1858,8 +1882,6 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libkern/_OSByteOrder.h:
 
-/opt/homebrew/include/openssl/opensslconf.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_if.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/movable_box.h:
@@ -1932,8 +1954,6 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iosfwd:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/unwrap_range.h:
@@ -2003,6 +2023,8 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/integer_sequence.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/exception_guard.h:
+
+/Users/hana/Desktop/kit-vcs/include/commands/status.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/declval.h:
 
@@ -2148,6 +2170,8 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/streambuf:
 
+/opt/homebrew/opt/openssl@3/include/openssl/opensslv.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_signed.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_floating_point.h:
@@ -2288,6 +2312,8 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/make_tuple_types.h:
 
+/opt/homebrew/opt/openssl@3/include/openssl/sha.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/find_index.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_useconds_t.h:
@@ -2321,8 +2347,6 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/empty.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_rwlock_t.h:
-
-/opt/homebrew/include/openssl/opensslv.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_size_t.h:
 
@@ -3044,6 +3068,8 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/exception:
 
+/Users/hana/Desktop/kit-vcs/include/commands/reset.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/swap_ranges.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/convertible_to.h:
@@ -3052,11 +3078,15 @@ _deps/cxxopts-src/include/cxxopts.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/iter_swap.h:
 
+/Users/hana/Desktop/kit-vcs/include/commands/stash.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/partition_copy.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_mutexattr_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/pstl.h:
+
+/opt/homebrew/opt/openssl@3/include/openssl/macros.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/unique_lock.h:
 

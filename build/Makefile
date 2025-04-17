@@ -129,6 +129,19 @@ kit-vcs/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/build
 .PHONY : kit-vcs/fast
 
+#=============================================================================
+# Target rules for targets named test_kit_vcs
+
+# Build rule for target.
+test_kit_vcs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_kit_vcs
+.PHONY : test_kit_vcs
+
+# fast build rule for target.
+test_kit_vcs/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/build
+.PHONY : test_kit_vcs/fast
+
 src/hash_object.o: src/hash_object.cpp.o
 .PHONY : src/hash_object.o
 
@@ -177,6 +190,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kit-vcs.dir/build.make CMakeFiles/kit-vcs.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/test_kit_vcs.o: tests/test_kit_vcs.cpp.o
+.PHONY : tests/test_kit_vcs.o
+
+# target to build an object file
+tests/test_kit_vcs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/tests/test_kit_vcs.cpp.o
+.PHONY : tests/test_kit_vcs.cpp.o
+
+tests/test_kit_vcs.i: tests/test_kit_vcs.cpp.i
+.PHONY : tests/test_kit_vcs.i
+
+# target to preprocess a source file
+tests/test_kit_vcs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/tests/test_kit_vcs.cpp.i
+.PHONY : tests/test_kit_vcs.cpp.i
+
+tests/test_kit_vcs.s: tests/test_kit_vcs.cpp.s
+.PHONY : tests/test_kit_vcs.s
+
+# target to generate assembly for a file
+tests/test_kit_vcs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_kit_vcs.dir/build.make CMakeFiles/test_kit_vcs.dir/tests/test_kit_vcs.cpp.s
+.PHONY : tests/test_kit_vcs.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +223,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... kit-vcs"
+	@echo "... test_kit_vcs"
 	@echo "... src/hash_object.o"
 	@echo "... src/hash_object.i"
 	@echo "... src/hash_object.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/test_kit_vcs.o"
+	@echo "... tests/test_kit_vcs.i"
+	@echo "... tests/test_kit_vcs.s"
 .PHONY : help
 
 
