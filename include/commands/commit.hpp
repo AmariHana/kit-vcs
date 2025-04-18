@@ -5,14 +5,17 @@
 #include <sstream>
 #include <fstream>
 #include <filesystem>
+#include <unordered_map>
 #include "../utils/constants.hpp"
 #include "../utils/kit_utils.hpp"
 #include "../utils/hash_object.hpp"
 
 namespace kit_vcs
 {
+    // Create a new commit
     inline bool create_commit(const std::string &message)
     {
+        // Ensure there are staged files
         if (!kit_utils::has_staged_files())
         {
             kit_utils::print_error("No files staged for commit.");
@@ -38,20 +41,23 @@ namespace kit_vcs
             {
                 commit_content << line << "\n";
             }
-            index_file.close();
 
             // Generate a hash for the commit
             std::string commit_hash = hash_object::compute_sha1(commit_content.str());
+            std::cout << "[DEBUG] Generated commit hash: " << commit_hash << "\n";
 
             // Write the commit to the objects directory
-            std::string commit_path = std::string(OBJECTS_DIR) + "/" + commit_hash;
+            std::string commit_path = OBJECTS_DIR + "/" + commit_hash;
             kit_utils::create_file(commit_path, commit_content.str());
+            std::cout << "[DEBUG] Commit written to: " << commit_path << "\n";
 
             // Update HEAD to point to the new commit
-            kit_utils::create_file(HEAD_FILE, commit_hash + "\n");
+            kit_utils::update_head(commit_hash);
+            std::cout << "[DEBUG] HEAD updated to: " << commit_hash << "\n";
 
             // Clear the index file after committing
             kit_utils::create_file(INDEX_FILE);
+            std::cout << "[DEBUG] Index file cleared.\n";
 
             kit_utils::print_message("Commit created successfully with message: " + message);
             return true;
@@ -62,6 +68,26 @@ namespace kit_vcs
             return false;
         }
     }
+
+    // Get the commit history
+    inline std::unordered_map<std::string, std::string> get_working_directory_files()
+    {
+        std::unordered_map<std::string, std::string> files;
+
+        for (const auto &entry : std::filesystem::recursive_directory_iterator("."))
+        {
+            if (entry.is_regular_file() && entry.path().string().find(KIT_DIR) == std::string::npos)
+            {
+                std::ifstream file(entry.path());
+                std::stringstream buffer;
+                buffer << file.rdbuf();
+                files[entry.path().filename().string()] = buffer.str();
+            }
+        }
+
+        return files;
+    }
+
 } // namespace kit_vcs
 
 #endif // COMMIT_HPP

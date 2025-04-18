@@ -10,6 +10,7 @@ namespace kit_vcs
 {
     inline bool switch_branch(const std::string &branch_name)
     {
+        // Ensure the repository is initialized
         if (!kit_utils::ensure_repository_initialized())
         {
             return false;
@@ -17,7 +18,10 @@ namespace kit_vcs
 
         try
         {
-            std::string branch_path = std::string(HEADS_DIR) + "/" + branch_name;
+            // Construct the branch path
+            std::string branch_path = HEADS_DIR + "/" + branch_name;
+
+            // Check if the branch exists
             if (!std::filesystem::exists(branch_path))
             {
                 kit_utils::print_error("Branch does not exist: " + branch_name);
@@ -27,6 +31,7 @@ namespace kit_vcs
             // Update the HEAD file to point to the new branch
             kit_utils::create_file(HEAD_FILE, "ref: refs/heads/" + branch_name + "\n");
             kit_utils::print_message("Switched to branch: " + branch_name);
+
             return true;
         }
         catch (const std::exception &e)
