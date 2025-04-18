@@ -15,6 +15,27 @@
 
 namespace kit_utils
 {
+    // Read the content of a file
+    inline std::string read_file(const std::string &path)
+    {
+        try
+        {
+            std::ifstream file(path);
+            if (!file)
+            {
+                throw std::runtime_error("Failed to open file: " + path);
+            }
+            std::stringstream buffer;
+            buffer << file.rdbuf();
+            return buffer.str();
+        }
+        catch (const std::exception &e)
+        {
+            error_handler::print_error("Error reading file: " + std::string(e.what())); // Updated
+            throw;
+        }
+    }
+
     // Print a standard message
     inline void print_message(const std::string &message)
     {
@@ -27,15 +48,13 @@ namespace kit_utils
         std::cerr << "[kit] Error: " << message << std::endl;
     }
 
-    // Ensure the repository is initialized
-    inline bool ensure_repository_initialized()
+    inline void debug(const std::string &message)
     {
-        if (!std::filesystem::exists(".kit"))
-        {
-            print_error("No kit repository found. Please initialize a repository first.");
-            return false;
-        }
-        return true;
+#ifdef DEBUG
+        std::cout << "[DEBUG] " << message << std::endl;
+#else
+        (void)message; // Suppress unused parameter warning
+#endif
     }
 
     // Create a file with optional content
@@ -52,9 +71,30 @@ namespace kit_utils
         }
         catch (const std::exception &e)
         {
-            print_error("Error creating file: " + std::string(e.what()));
-            throw;
+            error_handler::print_error("Error creating file: " + std::string(e.what()));
         }
+    }
+
+    // Initialize the repository
+    inline void initialize_repository()
+    {
+        if (!std::filesystem::exists(".kit"))
+        {
+            std::filesystem::create_directory(".kit");
+            create_file(".kit/HEAD", "");  // Create an empty HEAD file
+            create_file(".kit/index", ""); // Create an empty index file
+        }
+    }
+
+    // Ensure the repository is initialized
+    inline bool ensure_repository_initialized()
+    {
+        if (!std::filesystem::exists(".kit"))
+        {
+            print_error("No kit repository found. Please initialize a repository first.");
+            return false;
+        }
+        return true;
     }
 
     // Check if there are staged files
@@ -165,8 +205,8 @@ namespace kit_utils
     inline std::unordered_map<std::string, std::string> get_commit_files(const std::string &commit_hash)
     {
         std::unordered_map<std::string, std::string> files;
-
         std::string commit_path = OBJECTS_DIR + "/" + commit_hash;
+
         if (!std::filesystem::exists(commit_path))
         {
             throw std::runtime_error("Commit not found: " + commit_hash);
@@ -176,10 +216,7 @@ namespace kit_utils
         {
             if (entry.is_regular_file())
             {
-                std::ifstream file(entry.path());
-                std::stringstream buffer;
-                buffer << file.rdbuf();
-                files[entry.path().filename().string()] = buffer.str();
+                files[entry.path().filename().string()] = kit_utils::read_file(entry.path().string());
             }
         }
 
@@ -258,6 +295,37 @@ namespace kit_utils
         }
 
         return differences;
+    }
+
+    inline std::unordered_map<std::string, std::string> perform_three_way_merge(
+        const std::string &base_commit,
+        const std::string &current_commit,
+        const std::string &target_commit)
+    {
+        // Example logic for merging files (you can replace this with your actual logic)
+        std::unordered_map<std::string, std::string> merged_files;
+
+        // Retrieve files from each commit
+        auto base_files = get_commit_files(base_commit);
+        auto current_files = get_commit_files(current_commit);
+        auto target_files = get_commit_files(target_commit);
+
+        // Perform a simple merge (replace this with your actual merge logic)
+        for (const auto &[file, content] : base_files)
+        {
+            if (current_files[file] == target_files[file])
+            {
+                merged_files[file] = current_files[file]; // No conflict
+            }
+            else
+            {
+                merged_files[file] = "<<<<<<< CURRENT\n" + current_files[file] +
+                                     "=======\n" + target_files[file] +
+                                     ">>>>>>>\n"; // Simple conflict marker
+            }
+        }
+
+        return merged_files;
     }
 } // namespace kit_utils
 

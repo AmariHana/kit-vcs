@@ -234,6 +234,31 @@ Commands:
         }
     }
 
+    inline void handle_command(const std::string &command, const cxxopts::ParseResult &result)
+    {
+        static const std::unordered_map<std::string, std::function<void(const cxxopts::ParseResult &)>> commands = {
+            {"init", [](const cxxopts::ParseResult &)
+             { kit_vcs::initialize_repository(); }},
+            {"add", [](const cxxopts::ParseResult &res)
+             { kit_vcs::stage_file(res["add"].as<std::string>()); }},
+            {"commit", [](const cxxopts::ParseResult &res)
+             { kit_vcs::create_commit(res["commit"].as<std::string>()); }},
+            {"status", [](const cxxopts::ParseResult &)
+             { kit_vcs::get_repository_status(); }},
+            // Add other commands here...
+        };
+
+        auto it = commands.find(command);
+        if (it != commands.end())
+        {
+            it->second(result);
+        }
+        else
+        {
+            kit_utils::print_error("Unknown command: " + command);
+        }
+    }
+
     // Handle the `diff` command
     inline void handle_diff()
     {
