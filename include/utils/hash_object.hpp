@@ -8,17 +8,21 @@
 
 namespace hash_object
 {
-    inline std::string compute_sha1(const std::string &input)
+    inline std::string to_hex(const unsigned char *hash, size_t length)
     {
-        unsigned char hash[SHA_DIGEST_LENGTH];
-        SHA1(reinterpret_cast<const unsigned char *>(input.c_str()), input.size(), hash);
-
         std::ostringstream oss;
-        for (int i = 0; i < SHA_DIGEST_LENGTH; ++i)
+        for (size_t i = 0; i < length; ++i)
         {
             oss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
         }
         return oss.str();
+    }
+
+    inline std::string compute_sha1(const std::string &input)
+    {
+        unsigned char hash[SHA_DIGEST_LENGTH];
+        SHA1(reinterpret_cast<const unsigned char *>(input.c_str()), input.size(), hash);
+        return to_hex(hash, SHA_DIGEST_LENGTH);
     }
 }
 
