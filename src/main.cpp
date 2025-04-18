@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cxxopts.hpp>
-#include "cli.hpp"
+#include "cli/cli.hpp"
 
 int main(int argc, char *argv[])
 {

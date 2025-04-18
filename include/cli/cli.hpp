@@ -5,14 +5,15 @@
 #include <vector>
 #include <string>
 #include <cxxopts.hpp>
-#include "kit_vcs.hpp"
-#include "version.hpp"
-#include "utils/error_handler.hpp" // Corrected include path
+#include "../kit_vcs.hpp"
+#include "../version.hpp"
+#include "../utils/error_handler.hpp"
+#include "../utils/kit_utils.hpp"
 
 namespace cli
 {
     // Display the welcome screen
-    void display_welcome_screen()
+    inline void display_welcome_screen()
     {
         std::cout << R"(
          🦊
@@ -26,7 +27,7 @@ namespace cli
     }
 
     // Display the help screen
-    void display_help_screen()
+    inline void display_help_screen()
     {
         std::cout << R"(
 Usage: kit [command] [options]
@@ -43,19 +44,64 @@ Commands:
   merge         Merge branches
   reset         Reset to a specific commit
   diff          Show differences between commits or the working directory
+  visualize     Visualize the repository structure
   version       Show the version of kit-vcs
   help          Show this help message
 )" << std::endl;
     }
 
-    // Command handlers
-    void handle_init()
+    // Visualize the repository structure
+    inline void handle_visualize()
     {
-        display_welcome_screen();
-        kit_vcs::initialize_repository();
+        auto branches = kit_vcs::list_branches();
+        auto commit_history = kit_vcs::get_commit_history();
+
+        if (branches.empty())
+        {
+            kit_utils::print_message("No branches found to visualize.");
+            return;
+        }
+
+        std::cout << "\nRepository Visualization:\n"
+                  << std::endl;
+
+        // Display branches
+        std::cout << "Branches:" << std::endl;
+        for (const auto &branch : branches)
+        {
+            std::cout << "  - " << branch << std::endl;
+        }
+
+        // Display commit history
+        if (!commit_history.empty())
+        {
+            std::cout << "\nCommit History:" << std::endl;
+            for (const auto &commit : commit_history)
+            {
+                std::cout << "  * " << commit << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "\nNo commits found in the repository." << std::endl;
+        }
+
+        std::cout << "\nVisualization complete.\n"
+                  << std::endl;
     }
 
-    void handle_add(const std::vector<std::string> &files)
+    // Handle the `init` command
+    inline void handle_init()
+    {
+        display_welcome_screen();
+        if (!kit_vcs::initialize_repository())
+        {
+            error_handler::print_error("Failed to initialize repository.");
+        }
+    }
+
+    // Handle the `add` command
+    inline void handle_add(const std::vector<std::string> &files)
     {
         for (const auto &file : files)
         {
@@ -64,21 +110,29 @@ Commands:
                 error_handler::print_error("File does not exist: " + file);
                 continue;
             }
-            kit_vcs::stage_file(file);
+            if (!kit_vcs::stage_file(file))
+            {
+                error_handler::print_error("Failed to stage file: " + file);
+            }
         }
     }
 
-    void handle_commit(const std::string &message)
+    // Handle the `commit` command
+    inline void handle_commit(const std::string &message)
     {
         if (message.empty())
         {
             error_handler::print_error("Commit message cannot be empty.");
             return;
         }
-        kit_vcs::create_commit(message);
+        if (!kit_vcs::create_commit(message))
+        {
+            error_handler::print_error("Failed to create commit.");
+        }
     }
 
-    void handle_status()
+    // Handle the `status` command
+    inline void handle_status()
     {
         auto status = kit_vcs::get_repository_status();
         if (status.empty())
@@ -94,7 +148,8 @@ Commands:
         }
     }
 
-    void handle_log()
+    // Handle the `log` command
+    inline void handle_log()
     {
         auto commit_history = kit_vcs::get_commit_history();
         if (commit_history.empty())
@@ -110,7 +165,8 @@ Commands:
         }
     }
 
-    void handle_stash()
+    // Handle the `stash` command
+    inline void handle_stash()
     {
         if (!kit_vcs::stash_changes())
         {
@@ -118,7 +174,8 @@ Commands:
         }
     }
 
-    void handle_branch()
+    // Handle the `branch` command
+    inline void handle_branch()
     {
         auto branches = kit_vcs::list_branches();
         if (branches.empty())
@@ -135,7 +192,8 @@ Commands:
         }
     }
 
-    void handle_checkout(const std::string &branch)
+    // Handle the `checkout` command
+    inline void handle_checkout(const std::string &branch)
     {
         if (branch.empty())
         {
@@ -148,7 +206,8 @@ Commands:
         }
     }
 
-    void handle_merge(const std::string &branch)
+    // Handle the `merge` command
+    inline void handle_merge(const std::string &branch)
     {
         if (branch.empty())
         {
@@ -161,7 +220,8 @@ Commands:
         }
     }
 
-    void handle_reset(const std::string &commit)
+    // Handle the `reset` command
+    inline void handle_reset(const std::string &commit)
     {
         if (commit.empty())
         {
@@ -174,24 +234,39 @@ Commands:
         }
     }
 
-    void handle_diff()
+    // Handle the `diff` command
+    inline void handle_diff()
     {
-        std::string commit_hash = "HEAD"; // Default to HEAD or specify the desired commit hash
-        auto differences = kit_vcs::get_differences(commit_hash);
-        if (differences.empty())
+        try
         {
-            kit_utils::print_message("No differences to display.");
-        }
-        else
-        {
+            // Default to HEAD or specify the desired commit hash
+            std::string commit_hash = "HEAD";
+
+            // Retrieve differences
+            auto differences = kit_vcs::get_differences(commit_hash);
+
+            // Check if differences are empty
+            if (differences.empty())
+            {
+                kit_utils::print_message("No differences to display.");
+                return;
+            }
+
+            // Display differences
+            std::cout << "Differences:\n";
             for (const auto &diff : differences)
             {
-                std::cout << diff << std::endl;
+                std::cout << "  - " << diff << std::endl;
             }
+        }
+        catch (const std::exception &e)
+        {
+            kit_utils::print_error("Failed to display differences: " + std::string(e.what()));
         }
     }
 
-    void handle_version()
+    // Handle the `version` command
+    inline void handle_version()
     {
         kit_vcs::show_version();
     }
